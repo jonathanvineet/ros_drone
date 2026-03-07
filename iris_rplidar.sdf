@@ -1,33 +1,19 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
 
-  <model name="rplidar">
-    <static>false</static>
+  <model name="iris_rplidar">
 
-    <link name="link">
-      <pose>0 0 0 0 0 0</pose>
+    <!-- base drone -->
+    <include>
+      <uri>model://iris</uri>
+    </include>
 
-      <collision name="collision">
-        <geometry>
-          <cylinder>
-            <radius>0.035</radius>
-            <length>0.05</length>
-          </cylinder>
-        </geometry>
-      </collision>
+    <!-- custom ROS-enabled lidar -->
+    <link name="rplidar_link">
+      <pose>0 0 0.10 0 0 1.5708</pose>
 
-      <visual name="visual">
-        <geometry>
-          <cylinder>
-            <radius>0.035</radius>
-            <length>0.05</length>
-          </cylinder>
-        </geometry>
-      </visual>
-
-      <!-- LiDAR sensor -->
       <sensor name="laser" type="ray">
-        <pose>0 0 0.05 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <update_rate>20</update_rate>
         <visualize>true</visualize>
 
@@ -43,24 +29,30 @@
 
           <range>
             <min>0.2</min>
-            <max>6.0</max>
+            <max>10.0</max>
             <resolution>0.01</resolution>
           </range>
         </ray>
 
-        <!-- ROS2 LaserScan bridge -->
+        <!-- ROS2 bridge -->
         <plugin name="gazebo_ros_ray_sensor" filename="libgazebo_ros_ray_sensor.so">
           <ros>
             <namespace>/</namespace>
-            <!-- publish on /scan -->
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
-          <frame_name>rplidar</frame_name>
+          <frame_name>rplidar_link</frame_name>
         </plugin>
 
       </sensor>
     </link>
+
+    <!-- attach lidar to drone -->
+    <joint name="rplidar_joint" type="fixed">
+      <parent>iris::base_link</parent>
+      <child>rplidar_link</child>
+    </joint>
+
   </model>
 
 </sdf>
