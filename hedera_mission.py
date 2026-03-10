@@ -25,7 +25,7 @@ async def run():
     print("Starting OFFBOARD")
 
     await drone.offboard.set_position_ned(
-        PositionNedYaw(0,0,-60,0)
+        PositionNedYaw(0,0,-120,0)
     )
 
     await drone.offboard.start()
@@ -37,7 +37,7 @@ async def run():
 
     waypoints = [
 
-        (-120,-120,-60),
+        (-120,-120,-600),
         (120,-120,-60),
         (120,120,-60),
         (-120,120,-60),
