@@ -11,8 +11,14 @@ POSITION_TOLERANCE = 0.5  # meters
 # Define waypoints as (north, east, down) in meters
 WAYPOINTS = [
     {"north": 0.0, "east": 0.0, "down": -8.0, "name": "Waypoint 1"},
-    {"north": 48.0, "east": 5.0, "down": -8.0, "name": "Waypoint 2"},
-    {"north": 10.0, "east": 0.0, "down": -6.0, "name": "Waypoint 3"},
+    {"north": 60.0, "east": 5.0, "down": -8.0, "name": "Waypoint 2"},
+    {"north": 60.0, "east": 5.0, "down": -2.0, "name": "Waypoint 3"},
+    {"north": 60.0, "east": 70.0, "down": -2.0, "name": "Waypoint 4"},
+    {"north": 0.0, "east": 70.0, "down": -2.0, "name": "Waypoint 5"},
+    {"north": -60.0, "east": 70.0, "down": -2.0, "name": "Waypoint 6"},
+    {"north": -60.0, "east": -57.0, "down": -2.0, "name": "Waypoint 7"},
+    {"north": 60.0, "east": -57.0, "down": -2.0, "name": "Waypoint 8"},
+    {"north": 60.0, "east": 5.0, "down": -2.0, "name": "Waypoint 9"}
     # Add more waypoints here in the same format
 ]
 
